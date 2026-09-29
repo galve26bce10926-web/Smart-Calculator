@@ -54,16 +54,3 @@ We need a safer, more reliable calculator that validates its input, provides inf
 | NFR-8 | Scalability | New operations can be added without changing existing code | Operation registry (`OPERATIONS` dict) in `operations.py`; modules are loosely coupled |
 | NFR-9 | Error handling strategy | All expected failures are reported clearly and never crash the app | Custom exception hierarchy rooted at `CalculatorError`, caught centrally in `cli.py` and logged |
 
-## 5. Design Artefact Checklist
-| Artefact required by the PDF | Location |
-|---|---|
-| Problem Statement | `docs/requirements.md` section 1, `statement.md` |
-| Objectives | `docs/requirements.md` section 2 |
-| Functional Requirements | `docs/requirements.md` section 3 |
-| Non-functional Requirements | `docs/requirements.md` section 4 |
-| System Architecture Diagram | `docs/design.md` |
-| Process Flow / Workflow Diagram | `docs/design.md` |
-| Use Case Diagram | `docs/design.md` |
-| Class / Component Diagram | `docs/design.md` |
-| Sequence Diagram | `docs/design.md` |
-| ER Diagram / Schema Design | `docs/design.md` (JSON storage) |
