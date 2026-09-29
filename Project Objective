@@ -1,0 +1,48 @@
+The aim of this project is to design and build Smart Calculator, a modular Python application, and to apply the course concepts in a real-world context. 
+The project covers the four stages the guidelines describe: identifying a problem, designing a solution, implementing it and evaluating it.
+
+1. Identifying a Meaningful Problem
+
+Ordinary calculators have several weaknesses:
+
+They perform one operation at a time and do not accept full expressions.
+They evaluate typed input unsafely, for example through eval(), which allows code injection.
+They give unclear error messages for invalid input or division by zero.
+They keep no record of past calculations, so users cannot review or export their work.
+
+This project addresses these problems with a safe, reliable calculator that validates input, explains errors and remembers results.
+
+2. Designing a Technical Solution
+
+The solution uses a layered, modular architecture with three functional modules:
+
+Arithmetic Operations Module: addition, subtraction, multiplication, division, power, modulus and square root.
+Expression Evaluator Module: safe evaluation of expressions such as 2 + 3 * (4 - 1).
+History & Reports Module: persistent storage, summary statistics and CSV export.
+
+The design is documented with architecture, workflow, use case, class, sequence and ER diagrams.
+
+3. Implementing the Solution with Course Tools and Methods
+
+The system is implemented in Python using:
+
+Functions, modules and packages for a clean folder structure of 8 source files
+A custom exception hierarchy for error handling
+File handling (JSON and CSV) for persistence
+The ast module for secure expression parsing
+The logging module for monitoring
+Git for version control
+4. Demonstrating Understanding through Documentation and Evaluation
+
+Understanding is demonstrated through:
+
+Documentation: README.md, statement.md, the requirements specification, design diagrams and the project report.
+Evaluation: 18 automated unit tests covering normal, edge and error cases.
+Non-functional quality: security, reliability, usability, performance, resource efficiency, maintainability and logging.
+Summary of Objectives
+Identify the limitations of basic calculators and define a clear problem statement.
+Design a modular system with well-defined inputs, outputs and workflow.
+Implement the design in Python using the concepts learned in the course.
+Ensure security and reliability through validation, error handling and logging.
+Verify correctness through unit testing.
+Document the complete development process in the repository and the project report.
