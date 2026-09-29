@@ -1,1 +1,69 @@
+## 1. Problem Statement
+Basic calculators can only process one operation at a time, evaluate expressions in an unsafe way using `eval()`, provide unclear error messages and lack a calculation history.
+We need a safer, more reliable calculator that validates its input, provides informative error messages and provides historical information.
 
+## 2. Objectives
+1. Overcome the limitations of a standard calculator, including the unsafe nature of `eval()`, lack of informative error messages and lack of history.
+2. Design a modular and layered system, including modules for arithmetic operations, expression evaluation, and history.
+3. Build the calculator in Python using functions, modules, and exception handling, file access and the `ast` module.
+4. Ensure code reliability and security through validation, custom exception types, limiting resources and logging.
+5. Ensure code correctness with automated testing of normal, edge, and error cases.
+6. Document the code with requirements, UML diagrams, a README file, and a project report.
+
+## 3. Functional Requirements
+
+### Module 1 - Arithmetic Operations
+| ID | Description | Input | Output |
+|---|---|---|---|
+| FR-1 | Add, subtract, multiply, divide two numbers | Menu choice, 2 numbers | Numeric result |
+| FR-2 | Power and modulus of two numbers | Menu choice, 2 numbers | Numeric result |
+| FR-3 | Square root of one number | Menu choice, 1 number | Numeric result |
+| FR-4 | Reject division/modulus by zero and negative square roots | Invalid operands | Clear error message |
+
+### Module 2 - Expression Evaluator
+| ID | Description | Input | Output |
+|---|---|---|---|
+| FR-5 | Evaluate expressions with `+ - / %`, brackets and unary signs | Text, e.g. `2 + 3 (4 - 1)` | Numeric result |
+| FR-6 | Reject unsafe or malformed expressions | Text such as `__import__('os')` | Error message |
+
+### Module 3 - History & Reports
+| ID | Description | Input | Output |
+|---|---|---|---|
+| FR-7 | Record every calculation with timestamp | Expression, result | Entry in `history.json` |
+| FR-8 | View history and summary statistics (count, average, min, max) | Menu choice | Console listing |
+| FR-9 | Export history to CSV | Filename | `.csv` file |
+| FR-10 | Clear history | Menu choice | Empty history |
+
+### User Workflow
+1. Launch the application and view the main menu.
+2. Choose Basic Operation, Expression Evaluator or History & Reports.
+3. Enter the requested input, which is validated.
+4. The result (or a clear error) is displayed and stored in the history.
+5. Successful calculations are saved to history, the user is returned to the menu or exits.
+
+## 4. Non-Functional Requirements
+| ID | Category | Description | How it is met |
+|---|---|---|---|
+| NFR-1 | Security | Never execute arbitrary code from user input | `ast`-based evaluator allows only numbers and arithmetic operators |
+| NFR-2 | Reliability | Application must not crash on bad input or a corrupt data file | Custom exceptions caught in `cli.py`; `HistoryManager.load()` recovers from bad JSON |
+| NFR-3 | Usability | Clear menus and readable error messages | Numbered menus; integers shown without `.0` |
+| NFR-4 | Performance | Each calculation completes in under 1 second | Constant-time operations; exponent capped at 1000 |
+| NFR-5 | Resource efficiency | Bounded memory and file size | History capped at 100 entries; expression length capped at 200 characters |
+| NFR-6 | Maintainability | Easy to extend and test | Single-purpose modules, operation registry, docstrings, config constants |
+| NFR-7 | Logging | Operations and errors are traceable | File logging to `logs/calculator.log` |
+| NFR-8 | Scalability | New operations can be added without changing existing code | Operation registry (`OPERATIONS` dict) in `operations.py`; modules are loosely coupled |
+| NFR-9 | Error handling strategy | All expected failures are reported clearly and never crash the app | Custom exception hierarchy rooted at `CalculatorError`, caught centrally in `cli.py` and logged |
+
+## 5. Design Artefact Checklist
+| Artefact required by the PDF | Location |
+|---|---|
+| Problem Statement | `docs/requirements.md` section 1, `statement.md` |
+| Objectives | `docs/requirements.md` section 2 |
+| Functional Requirements | `docs/requirements.md` section 3 |
+| Non-functional Requirements | `docs/requirements.md` section 4 |
+| System Architecture Diagram | `docs/design.md` |
+| Process Flow / Workflow Diagram | `docs/design.md` |
+| Use Case Diagram | `docs/design.md` |
+| Class / Component Diagram | `docs/design.md` |
+| Sequence Diagram | `docs/design.md` |
+| ER Diagram / Schema Design | `docs/design.md` (JSON storage) |
